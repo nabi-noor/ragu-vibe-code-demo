@@ -5,6 +5,7 @@ import { CartProvider } from "@/components/CartProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
 import { SkipNavLink, SkipNavTarget } from "@/components/SkipNav";
+import { RestaurantSchema } from "@/components/StructuredData";
 import "./globals.css";
 
 const inter = Inter({
@@ -50,6 +51,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
+      <head>
+        <RestaurantSchema />
+      </head>
       <body>
         <SkipNavLink />
         <CartProvider>
