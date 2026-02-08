@@ -1,3 +1,4 @@
+import { memo } from "react";
 import {
   Clock,
   CookingPot,
@@ -62,7 +63,7 @@ interface OrderStatusBadgeProps {
   className?: string;
 }
 
-export default function OrderStatusBadge({
+export default memo(function OrderStatusBadge({
   status,
   size = "md",
   showIcon = true,
@@ -90,4 +91,4 @@ export default function OrderStatusBadge({
       {config.label}
     </span>
   );
-}
+});
