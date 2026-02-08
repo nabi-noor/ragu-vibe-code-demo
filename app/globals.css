@@ -69,6 +69,8 @@
   /* --- Custom Animations --- */
   --animate-fade-in: fade-in 0.3s ease-out;
   --animate-slide-up: slide-up 0.3s ease-out;
+  --animate-scale-in: scale-in 0.2s ease-out;
+  --animate-slide-down: slide-down 0.3s ease-out;
 }
 
 /* Keyframes */
@@ -92,6 +94,28 @@
   }
 }
 
+@keyframes scale-in {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes slide-down {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 /* ============================================
    Base Styles
    ============================================ */
@@ -108,6 +132,34 @@ body {
 *:focus-visible {
   @apply ring-2 ring-primary-500 ring-offset-2 outline-none;
 }
+
+/* ============================================
+   Animation Utilities
+   ============================================ */
+
+/* Card hover lift effect */
+.card-hover {
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px -5px rgb(0 0 0 / 0.1),
+    0 10px 10px -5px rgb(0 0 0 / 0.04);
+}
+
+/* Button press effect */
+.btn-press:active {
+  transform: scale(0.97);
+}
+
+/* Stagger animation delays for lists */
+.stagger-1 { animation-delay: 50ms; }
+.stagger-2 { animation-delay: 100ms; }
+.stagger-3 { animation-delay: 150ms; }
+.stagger-4 { animation-delay: 200ms; }
+.stagger-5 { animation-delay: 250ms; }
+.stagger-6 { animation-delay: 300ms; }
 
 /* Respect reduced-motion preferences */
 @media (prefers-reduced-motion: reduce) {

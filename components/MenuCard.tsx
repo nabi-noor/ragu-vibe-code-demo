@@ -24,7 +24,7 @@ export default function MenuCard({ item }: MenuCardProps) {
   return (
     <div
       className={cn(
-        "group flex flex-col overflow-hidden rounded-xl border border-warm-200 bg-white shadow-sm transition-shadow hover:shadow-soft",
+        "card-hover group flex flex-col overflow-hidden rounded-xl border border-warm-200 bg-white shadow-sm transition-shadow hover:shadow-soft",
         !item.available && "opacity-60"
       )}
     >
