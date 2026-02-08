@@ -163,6 +163,7 @@ export default function CheckoutPage() {
                   <input
                     id="customerName"
                     type="text"
+                    autoComplete="name"
                     value={customerName}
                     onChange={(e) => setCustomerName(e.target.value)}
                     placeholder="John Doe"
@@ -185,6 +186,7 @@ export default function CheckoutPage() {
                   <input
                     id="email"
                     type="email"
+                    autoComplete="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     placeholder="john@example.com"
@@ -205,6 +207,7 @@ export default function CheckoutPage() {
                   <input
                     id="phone"
                     type="tel"
+                    autoComplete="tel"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                     placeholder="555-123-4567"
