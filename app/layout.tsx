@@ -4,6 +4,7 @@ import { Toaster } from "sonner";
 import { CartProvider } from "@/components/CartProvider";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
+import { SkipNavLink, SkipNavTarget } from "@/components/SkipNav";
 import "./globals.css";
 
 const inter = Inter({
@@ -50,9 +51,13 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${inter.variable} ${playfair.variable}`}>
       <body>
+        <SkipNavLink />
         <CartProvider>
           <Navbar />
-          <main className="min-h-screen">{children}</main>
+          <main id="main-content" className="min-h-screen">
+            <SkipNavTarget />
+            {children}
+          </main>
           <Footer />
         </CartProvider>
         <Toaster

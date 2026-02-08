@@ -21,7 +21,7 @@ export default function Navbar() {
 
   return (
     <header className="sticky top-0 z-50 border-b border-warm-200 bg-white/95 backdrop-blur-sm">
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
+      <nav aria-label="Main navigation" className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* ---- Brand ---- */}
         <Link href="/" className="flex items-center gap-2">
           <UtensilsCrossed className="h-7 w-7 text-primary-600" />
@@ -67,7 +67,8 @@ export default function Navbar() {
           <button
             onClick={() => setMobileOpen((o) => !o)}
             className="rounded-lg p-2 text-warm-600 transition-colors hover:bg-warm-100 md:hidden"
-            aria-label="Toggle menu"
+            aria-label={mobileOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileOpen}
           >
             {mobileOpen ? (
               <X className="h-5 w-5" />
