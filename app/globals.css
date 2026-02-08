@@ -1,1 +1,110 @@
 @import "tailwindcss";
+
+/* ============================================
+   Bella Cucina — Custom Theme
+   Warm Italian restaurant palette (amber/orange)
+   ============================================ */
+
+@theme {
+  /* --- Primary: Warm Amber --- */
+  --color-primary-50: #fff8f1;
+  --color-primary-100: #feecdc;
+  --color-primary-200: #fcd9b8;
+  --color-primary-300: #fabe89;
+  --color-primary-400: #f79d58;
+  --color-primary-500: #f47e33;
+  --color-primary-600: #e56424;
+  --color-primary-700: #be4d1b;
+  --color-primary-800: #973e1e;
+  --color-primary-900: #7a351c;
+  --color-primary-950: #42190b;
+
+  /* --- Secondary: Terracotta --- */
+  --color-secondary-50: #fdf3f3;
+  --color-secondary-100: #fce4e4;
+  --color-secondary-200: #fbcdcd;
+  --color-secondary-300: #f6abab;
+  --color-secondary-400: #ee7a7a;
+  --color-secondary-500: #e24f4f;
+  --color-secondary-600: #cf3333;
+  --color-secondary-700: #ad2727;
+  --color-secondary-800: #8f2424;
+  --color-secondary-900: #772424;
+  --color-secondary-950: #400e0e;
+
+  /* --- Accent: Olive Green --- */
+  --color-accent-50: #f6f7f0;
+  --color-accent-100: #e9ecdb;
+  --color-accent-200: #d5dabb;
+  --color-accent-300: #b8c392;
+  --color-accent-400: #9dab6e;
+  --color-accent-500: #809050;
+  --color-accent-600: #64723d;
+  --color-accent-700: #4d5832;
+  --color-accent-800: #3f472b;
+  --color-accent-900: #373e28;
+  --color-accent-950: #1c2012;
+
+  /* --- Neutral: Warm Grays --- */
+  --color-warm-50: #faf9f7;
+  --color-warm-100: #f0eeea;
+  --color-warm-200: #e0dbd4;
+  --color-warm-300: #ccc4b8;
+  --color-warm-400: #b5a899;
+  --color-warm-500: #a49484;
+  --color-warm-600: #978477;
+  --color-warm-700: #7e6d63;
+  --color-warm-800: #685b53;
+  --color-warm-900: #554b45;
+  --color-warm-950: #2d2724;
+
+  /* --- Font Families --- */
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-serif: "Playfair Display", ui-serif, Georgia, serif;
+
+  /* --- Custom Shadows --- */
+  --shadow-soft: 0 2px 15px -3px rgb(0 0 0 / 0.07),
+    0 10px 20px -2px rgb(0 0 0 / 0.04);
+
+  /* --- Custom Animations --- */
+  --animate-fade-in: fade-in 0.3s ease-out;
+  --animate-slide-up: slide-up 0.3s ease-out;
+}
+
+/* Keyframes */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   Base Styles
+   ============================================ */
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-warm-50 font-sans text-warm-900 antialiased;
+}
+
+/* Focus ring utility — accessible and consistent */
+*:focus-visible {
+  @apply ring-2 ring-primary-500 ring-offset-2 outline-none;
+}
