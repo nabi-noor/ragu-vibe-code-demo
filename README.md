@@ -177,10 +177,13 @@ ragu-vibe-code-demo/
 │       │   ├── route.ts          # GET all / POST new menu item
 │       │   └── [id]/
 │       │       └── route.ts      # PUT / DELETE single menu item
-│       └── orders/
-│           ├── route.ts          # GET all / POST new order
-│           └── [id]/
-│               └── route.ts      # GET / PATCH single order
+│       ├── orders/
+│       │   ├── route.ts          # GET all / POST new order
+│       │   └── [id]/
+│       │       └── route.ts      # GET / PATCH single order
+│       └── admin/
+│           └── stats/
+│               └── route.ts      # GET dashboard statistics
 │
 ├── components/                   # Shared React components
 │   ├── Navbar.tsx                # Responsive nav with cart badge
@@ -189,7 +192,9 @@ ragu-vibe-code-demo/
 │   ├── CartProvider.tsx          # React Context for cart state
 │   ├── OrderStatusBadge.tsx      # Colour-coded status pill
 │   ├── AdminAuth.tsx             # Password gate for admin
-│   └── Skeletons.tsx             # Loading skeleton components
+│   ├── Skeletons.tsx             # Loading skeleton components
+│   ├── SkipNav.tsx               # Skip-to-content accessibility link
+│   └── StructuredData.tsx        # JSON-LD structured data for SEO
 │
 ├── lib/                          # Core logic (no React)
 │   ├── types.ts                  # TypeScript interfaces & constants
@@ -227,7 +232,8 @@ ragu-vibe-code-demo/
 
 | Variable | Required | Default | Description |
 |----------|----------|---------|-------------|
-| `ADMIN_PASSWORD` | Yes | `admin123` | Password for accessing the admin panel |
+| `NEXT_PUBLIC_ADMIN_PASSWORD` | Yes | `admin123` | Password for accessing the admin panel |
+| `NEXT_PUBLIC_BASE_URL` | No | `https://bellacucina.com` | Base URL for sitemap and robots.txt |
 
 ### Setup
 
@@ -236,9 +242,10 @@ ragu-vibe-code-demo/
    cp .env.example .env.local
    ```
 
-2. Edit `.env.local` to change the password (optional):
+2. Edit `.env.local` to change values (optional):
    ```
-   ADMIN_PASSWORD=your_custom_password
+   NEXT_PUBLIC_ADMIN_PASSWORD=your_custom_password
+   NEXT_PUBLIC_BASE_URL=https://your-domain.com
    ```
 
 The `.env.local` file is gitignored and will never be committed.
@@ -252,13 +259,13 @@ The `dev-plan/` directory contains a comprehensive 8-phase implementation plan w
 | Phase | Name | Tasks | Status |
 |-------|------|-------|--------|
 | 1 | Project Setup & Foundation | 7 | Complete |
-| 2 | Core API Routes | 4 | Pending |
-| 3 | Cart Management & Context | 2 | Pending |
-| 4 | Shared Components | 6 | Pending |
-| 5 | Customer-Facing Pages | 5 | Pending |
-| 6 | Admin Panel | 4 | Pending |
-| 7 | Polish & UX Enhancements | 7 | Pending |
-| 8 | Deployment & Documentation | 5 | Pending |
+| 2 | Core API Routes | 4 | Complete |
+| 3 | Cart Management & Context | 2 | Complete |
+| 4 | Shared Components | 6 | Complete |
+| 5 | Customer-Facing Pages | 5 | Complete |
+| 6 | Admin Panel | 4 | Complete |
+| 7 | Polish & UX Enhancements | 7 | Complete |
+| 8 | Deployment & Documentation | 5 | Complete |
 
 Each task file includes step-by-step implementation guides, code examples, acceptance criteria, testing strategies, and common pitfalls. Start with [dev-plan/README.md](dev-plan/README.md).
 
@@ -310,6 +317,7 @@ All endpoints live under `app/api/` and use Next.js Route Handlers.
 | `POST` | `/api/orders` | Place a new order |
 | `GET` | `/api/orders/[id]` | Get a single order (confirmation page) |
 | `PATCH` | `/api/orders/[id]` | Update order status (admin) |
+| `GET` | `/api/admin/stats` | Dashboard statistics (admin) |
 
 ### Example: Place an order
 
@@ -393,8 +401,9 @@ Typography:
 
 1. Push your code to GitHub (already done)
 2. Go to [vercel.com](https://vercel.com) and import the repository
-3. Add the environment variable:
-   - `ADMIN_PASSWORD` = `admin123` (or your custom password)
+3. Add the environment variables:
+   - `NEXT_PUBLIC_ADMIN_PASSWORD` = `admin123` (or your custom password)
+   - `NEXT_PUBLIC_BASE_URL` = your Vercel deployment URL
 4. Deploy
 
 The app will build and deploy automatically on every push to `main`.
